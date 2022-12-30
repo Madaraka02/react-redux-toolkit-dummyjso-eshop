@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { PRODUCT_PREFIX } from '../routes'
 import Rating from './Rating'
 
-function Product({title, image, price, category, rating, brand, discount, stock}) {
+function Product({id, title, image, price, category, rating, brand, discount, stock}) {
     const [showFullName, setShowFullName] = useState(false)
+    const navigate = useNavigate()
   return (
     <>
+    <Link to={`${PRODUCT_PREFIX}${id}`}>
         <div className=' bg-white rounded-md shadow-md flex flex-col gap-2 h-full'>
         <div className='rounded-md p-2 relative'>
           <img src={image} className='rounded-md h-48 w-full object-contain' />
@@ -50,6 +54,7 @@ function Product({title, image, price, category, rating, brand, discount, stock}
         </div>
 
       </div>
+    </Link>
     </>
   )
 }

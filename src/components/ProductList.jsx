@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { PRODUCT_PREFIX } from '../routes'
 import Rating from './Rating'
 
-function ProductList({title, image, price, category, rating, brand, stock} ) {
+function ProductList({id, title, image, price, category, rating, brand, stock} ) {
     const [showFullName, setShowFullName] = useState(false)
 
   return (
     <>
+    <Link to={`${PRODUCT_PREFIX}${id}`}>
+
         <div className=' bg-white rounded-md shadow-md flex flex-row gap-2 h-full'>
         <div className='rounded-md p-2 w-3/12'>
           <img src={image} className='rounded-md h-48 w-full object-contain' />
@@ -51,6 +55,7 @@ function ProductList({title, image, price, category, rating, brand, stock} ) {
         </div>
         </div>
       </div>
+      </Link>
     </>
   )
 }

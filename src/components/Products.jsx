@@ -41,7 +41,7 @@ function Products() {
     </div>
 
     <>
-    <div className={`${displayDesign === 'gridView' ? 'flex md:grid flex-col md:grid-cols-4':'flex flex-col' }  gap-2 py-1`}>
+    <div className={`${displayDesign === 'gridView' ? 'flex md:grid flex-col md:grid-cols-4':'flex flex-col' }  gap-2 py-4`}>
     {isLoading?
       <>
     <Skeleton height={500} width='100%'/>
@@ -58,6 +58,7 @@ function Products() {
       {displayDesign === 'gridView' ?
 
       <Product 
+      id={product.id}
       title={product.title} 
       brand={product.brand} 
       discount={product.discountPercentage} 
@@ -69,6 +70,7 @@ function Products() {
       :
 
       <ProductList 
+      id={product.id}
       title={product.title} 
       brand={product.brand} 
       discount={product.discountPercentage} 
@@ -104,6 +106,7 @@ function Products() {
       {displayDesign === 'gridView' ?
 
         <Product 
+        id={product.id}
         title={product.title} 
         brand={product.brand} 
         discount={product.discountPercentage} 
@@ -114,7 +117,8 @@ function Products() {
         rating={product.rating} />  
         :
 
-        <ProductList 
+        <ProductList
+        id={product.id}
         title={product.title} 
         brand={product.brand} 
         discount={product.discountPercentage} 
