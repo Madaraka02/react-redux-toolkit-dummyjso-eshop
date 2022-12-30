@@ -20,7 +20,9 @@ function SearchResult() {
 
   return (
     <>
-        <div className='hidden md:flex flex-row-reverse gap-4 px-4 py-4 rounded-md bg-white shadow-md'>
+    {products.products.length>0?
+    <>
+    <div className='hidden md:flex flex-row-reverse gap-4 px-4 py-4 rounded-md bg-white shadow-md'>
         <div
         onClick={() => setDisplayDesign('listView') } 
         className='flex flex-row gap-2 cursor-pointer'>
@@ -93,6 +95,10 @@ function SearchResult() {
     }
     </div>
     </>
+    </>
+    :
+    <p className='font-roboto justify-center items-center text-[18px] flex'>{term} not found</p>
+    }
 
     </>
   )

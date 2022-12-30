@@ -54,14 +54,14 @@ function Header() {
             <li className={`relative grow `}>
               <div className='w-full relative items-center'>
                 <form
-                  className='flex flex-row w-full rounded-md p-2 border-slate-800 border '
+                  className='flex flex-row w-full rounded-md p-2 border-slate-800 bg-white border '
                   onSubmit={handleSearchParts}
                   >
                   <input type="text"
                     name="searchParts"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className='w-full placeholder:italic font-satoshi outline-none font-normal placeholder:text-xs'
+                    className='w-full placeholder:italic font-satoshi outline-none font-normal placeholder:bg-white focus:bg-white placeholder:text-xs bg-white'
                     placeholder='Search product...'
                   />
                   <button type="submit" className=" rounded-md">

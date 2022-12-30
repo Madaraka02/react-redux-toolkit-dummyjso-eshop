@@ -5,7 +5,7 @@ export const SEARCH_PREFIX = '/product/search'
 
 export const PRODUCT_PREFIX = '/products/'
 export const PRODUCT_DETAILS_PAGE = `/${PRODUCT_PREFIX}:${PRODUCT_POSTFIX}`
-export const SEARCH_RESULTS_PAGE = '/items'
+export const SEARCH_RESULTS_PAGE = '/products'
 
 export const CATEGORY_POSTFIX = 'categoryName'
 export const CATEGORY_PREFIX = '/categories/'
