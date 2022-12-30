@@ -25,7 +25,7 @@ function ProductList({id, title, image, price, category, rating, brand, stock} )
         <p
          className='font-roboto cursor-pointer text-[18px] capitalize'>{title.slice(0,25)}...</p>
         {showFullName &&
-        <p className='font-roboto z-50 text-[16px] px-4 py-3 rounded-md bg-gray-200 w-full right-1 absolute'>{title}</p>
+        <p className='font-roboto text-[16px] px-4 py-3 rounded-md bg-gray-200 w-full right-1 absolute'>{title}</p>
         }
         <p className='font-roboto text-[14px] '>{category}</p>
 

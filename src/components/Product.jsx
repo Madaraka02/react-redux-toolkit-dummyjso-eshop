@@ -12,7 +12,7 @@ function Product({id, title, image, price, category, rating, brand, discount, st
         <div className=' bg-white rounded-md shadow-md flex flex-col gap-2 h-full'>
         <div className='rounded-md p-2 relative'>
           <img src={image} className='rounded-md h-48 w-full object-contain' />
-        <p className='font-roboto z-50 top-0 text-[16px] px-4 py-2 rounded-md bg-[#FFA500] justify-end right-1 absolute'>{discount}%</p>
+        <p className='font-roboto top-0 text-[16px] px-4 py-2 rounded-md bg-[#FFA500] justify-end right-1 absolute'>{discount}%</p>
 
         </div>
 

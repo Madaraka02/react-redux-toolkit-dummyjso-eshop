@@ -1,18 +1,17 @@
 import React from 'react'
 import Header from '../components/Header'
-import ProdcutDetails from '../components/ProdcutDetails'
+import SearchResult from '../components/SearchResult'
 
-function ProductPage() {
+function SearchPage() {
   return (
-    
-    <>
+    <>    
     <Header />
-
     <div className='mx-auto h-screen container px-2 md:px-8 py-20'>
-        <ProdcutDetails />
-    </div>
-    </>
+    <SearchResult />
+
+  </div>
+  </>
   )
 }
 
-export default ProductPage
+export default SearchPage
