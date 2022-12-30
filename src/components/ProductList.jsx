@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
 import Rating from './Rating'
 
-function Product({title, image, price, category, rating, brand, discount, stock}) {
+function ProductList({title, image, price, category, rating, brand, stock} ) {
     const [showFullName, setShowFullName] = useState(false)
+
   return (
     <>
-        <div className=' bg-white rounded-md shadow-md flex flex-col gap-2 h-full'>
-        <div className='rounded-md p-2 relative'>
+        <div className=' bg-white rounded-md shadow-md flex flex-row gap-2 h-full'>
+        <div className='rounded-md p-2 w-3/12'>
           <img src={image} className='rounded-md h-48 w-full object-contain' />
-        <p className='font-roboto z-50 top-0 text-[16px] px-4 py-2 rounded-md bg-[#FFA500] justify-end right-1 absolute'>{discount}%</p>
-
         </div>
+
+        <div className='w-9/12'>
 
         <div 
         onMouseEnter={() => setShowFullName(true)}
         onMouseLeave={() => setShowFullName(false)}
-        className='flex cursor-pointer flex-row justify-between gap-2 p-2 relative'>
+        className='flex cursor-pointer flex-row  gap-2 p-2 relative'>
 
         <p
          className='font-roboto cursor-pointer text-[18px] capitalize'>{title.slice(0,25)}...</p>
@@ -29,7 +30,7 @@ function Product({title, image, price, category, rating, brand, discount, stock}
         <p className='font-roboto text-[18px] capitalize p-2'>${price}</p>
         <div className='flex flex-row gap-2 p-2'>
         <p className='font-roboto text-[14px] capitalize p-2'>{brand}</p>
-        <p className='font-roboto text-[14px] capitalize p-2'>{stock} items in stock</p>
+        <p className='font-roboto text-[12px] capitalize p-2'>{stock} items in stock</p>
 
         </div>
         <div className='flex flex-row gap-2 p-2'>
@@ -48,10 +49,10 @@ function Product({title, image, price, category, rating, brand, discount, stock}
 
                 </button>
         </div>
-
+        </div>
       </div>
     </>
   )
 }
 
-export default Product
+export default ProductList
