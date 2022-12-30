@@ -1,21 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Rating from './Rating'
 
 function SingleProduct({title, image, price, category, rating, brand, discount, stock, images}) {
+  const [displayFullImage, setDisplayFullImage] = useState(null)
+  console.log(displayFullImage)
   return (
     <>
-    <div className="flex flex-col gap-1 rounded-md shadow-md p-2 bg-white">
-      <div className="flex flex-row gap-4">
+    <div className="flex flex-col gap-1 rounded-md shadow-md p-2 bg-white w-full">
+      <div className="flex flex-col md:flex-row gap-4 w-full">
 
-      <div className="rounded-md border border-gray-200">
-        <img src={image} alt={title} className='rounded h-48 w-full' />
+      <div className="rounded-md border border-gray-200 w-full md:w-5/12">
+        {displayFullImage !== null ?
+        <img src={displayFullImage} alt={title} className='rounded h-72 w-full' />
+        :
+        <img src={image} alt={title} className='rounded h-72 w-full' />
+        }
       </div>
-      <div className="flex flex-col gap-2 relative">
+      <div className="flex flex-col gap-2 relative w-full md:w-7/12">
       <p className='font-roboto z-50 top-0 text-[16px] px-4 py-2 rounded-md bg-[#FFA500] justify-end right-1 absolute'>{discount}%</p>
 
 
       <div
-        className='flex cursor-pointer flex-row justify-between gap-2 p-2'>
+        className='flex cursor-pointer flex-row  gap-4 p-2'>
 
         <p
          className='font-roboto cursor-pointer text-[18px] capitalize'>{title}</p>
@@ -48,14 +54,18 @@ function SingleProduct({title, image, price, category, rating, brand, discount, 
         </div>
       </div>
       </div>
-      <div className="flex flex-row gap-2 py-1 px-2">
+      <div className="flex flex-row gap-2 py-1 px-2 w-full ">
         {images?.map((im, index) => (
 
         <div className="rounded-lg ">
-          <img src={im} alt={index} className='w-28 h-28 rounded'/>
+          <img 
+          onClick={() => setDisplayFullImage(im)}
+          src={im} alt={index} className='w-28 h-28 rounded'/>
         </div>
         ))}
       </div>
+      {/* <img src={displayFullImage} alt='' className='w-full h-60 rounded'/> */}
+
     </div>
     </>
   )
