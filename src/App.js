@@ -5,6 +5,7 @@ import { CATEGORY_PRODUCTS_PAGE, MAIN_HOMEPAGE, PRODUCT_DETAILS_PAGE, SEARCH_RES
 import ProductPage from './pages/ProductPage';
 import SearchPage from './pages/SearchPage';
 import CategoryProductsPage from './pages/CategoryProductsPage';
+import PostsPage from './pages/PostsPage';
 
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
     <Route path={PRODUCT_DETAILS_PAGE} element={<ProductPage />} />
     <Route path={SEARCH_RESULTS_PAGE} element={<SearchPage />} />
     <Route path={CATEGORY_PRODUCTS_PAGE} element={<CategoryProductsPage />} />
+    <Route path='posts' element={<PostsPage />} />
+
 
 
 

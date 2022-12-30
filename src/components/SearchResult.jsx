@@ -20,7 +20,7 @@ function SearchResult() {
 
   return (
     <>
-    {products.products.length>0?
+    {products?.products.length>0?
     <>
     <div className='hidden md:flex flex-row-reverse gap-4 px-4 py-4 rounded-md bg-white shadow-md'>
         <div
