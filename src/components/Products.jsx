@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { useGetProductsQuery } from '../features/products/productsApiSlice'
 import Ad from './Ad'
+import LoadingSkeleton from './LoadingSkeleton'
 import Product from './Product'
 import ProductList from './ProductList'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 function Products() {
   const { data: products, isLoading, isSuccess, isError, error } = useGetProductsQuery()
   const [displayDesign, setDisplayDesign] = useState('gridView')
-  console.log(products.products)
+  console.log('products', products)
 
   return (
     <>
@@ -38,6 +42,17 @@ function Products() {
 
     <>
     <div className={`${displayDesign === 'gridView' ? 'flex md:grid flex-col md:grid-cols-4':'flex flex-col' }  gap-2 py-1`}>
+    {isLoading?
+      <>
+    <Skeleton height={500} width='100%'/>
+    <Skeleton height={500} width='100%'/>
+    <Skeleton height={500} width='100%'/>
+    <Skeleton height={500} width='100%'/>
+
+      </>
+
+    :
+    <>
     {products?.products?.slice(0, 3).map((product) => (
       <>
       {displayDesign === 'gridView' ?
@@ -67,9 +82,24 @@ function Products() {
       </>
     ))}
     <Ad />
+    </>
+}
     </div>
     <div className={`${displayDesign === 'gridView' ? 'flex md:grid flex-col md:grid-cols-4':'flex flex-col' }  gap-2 py-1`}>
-    {products?.products?.slice(3, products?.length).map((product) => (
+    {isLoading?
+    // <LoadingSkeleton />
+    <>
+    <Skeleton height={500} width='100%'/>
+    <Skeleton height={500} width='100%'/>
+    <Skeleton height={500} width='100%'/>
+    <Skeleton height={500} width='100%'/>
+
+      </>
+
+
+    :
+    <>
+    {products?.products?.slice(3, products?.products?.length).map((product) => (
       <>
       {displayDesign === 'gridView' ?
 
@@ -97,6 +127,8 @@ function Products() {
         }    
       </>
     ))}
+    </>
+    }
     </div>
     </>
 

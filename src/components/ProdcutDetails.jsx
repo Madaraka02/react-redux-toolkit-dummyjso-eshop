@@ -2,6 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetSingleProductQuery } from '../features/products/productsApiSlice'
 import SingleProduct from './SingleProduct'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function ProdcutDetails() {
     const  { productId } = useParams()
@@ -10,6 +12,9 @@ function ProdcutDetails() {
   return (
     <>
     {/* single prod component */}
+    {isLoading?
+        <Skeleton height={300}/>
+        :
     <SingleProduct
     title={product?.title} 
     brand={product?.brand} 
@@ -22,6 +27,7 @@ function ProdcutDetails() {
     images={product?.images} 
     
     />
+    }
     </>
   )
 }
