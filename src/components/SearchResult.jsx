@@ -9,13 +9,14 @@ import { useSearchParams } from "react-router-dom";
 
 
 function SearchResult() {
-    const searchParams = useSearchParams();
+    // const searchParams = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams()
 
-    const { data: products, isLoading, isSuccess, isError, error } = useSearchProductQuery('phone')
+    const term = searchParams.get('q')
+    const { data: products, isLoading, isSuccess, isError, error } = useSearchProductQuery(term)
     const [displayDesign, setDisplayDesign] = useState('gridView')
     console.log('products', products)
-    // const term = searchParams.get('q')
-    console.log('search term', searchParams)
+    console.log('search term', term)
 
   return (
     <>
