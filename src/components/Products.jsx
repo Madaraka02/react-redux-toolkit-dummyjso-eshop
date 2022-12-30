@@ -35,6 +35,8 @@ function Products() {
         </div>
 
     </div>
+
+    <>
     <div className={`${displayDesign === 'gridView' ? 'flex md:grid flex-col md:grid-cols-4':'flex flex-col' }  gap-2 py-1`}>
     {products?.products?.slice(0, 3).map((product) => (
       <>
@@ -97,6 +99,9 @@ function Products() {
     ))}
     </div>
     </>
+
+    </>
+
   )
 }
 

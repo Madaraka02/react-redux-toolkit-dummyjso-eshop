@@ -9,7 +9,22 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         getSingleProduct: builder.query({
             query: (id) => `/products/${id}`
         }),
+        searchProduct: builder.query({
+            query: (searchTerm) => `/products/search?q=${searchTerm}`
+        }),
+        getCategories: builder.query({
+            query: () => '/products/categories'
+        }),
+        getCategoryProducts: builder.query({
+            query: (categoryName) => `/products/category/${categoryName}`
+        }),
     }),
 })
 
-export const { useGetProductsQuery, useGetSingleProductQuery } = productsApiSlice
+
+export const { 
+    useGetProductsQuery, 
+    useGetSingleProductQuery, 
+    useSearchProductQuery,
+    useGetCategoriesQuery,
+    useGetCategoryProductsQuery } = productsApiSlice

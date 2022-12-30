@@ -1,13 +1,20 @@
 import './App.css';
-import Products from './components/Products';
+import { Routes, Route } from "react-router-dom";
+import ProductsPage from './pages/ProductsPage';
+import { MAIN_HOMEPAGE, PRODUCT_DETAILS_PAGE } from './routes';
+import ProductPage from './pages/ProductPage';
+
 
 function App() {
   return (
     <>
-    <div className='mx-auto h-screen container px-2 md:px-8'>
-      <Products />
+    <Routes>
+    <Route path={MAIN_HOMEPAGE} element={<ProductsPage />} />
+    <Route path={PRODUCT_DETAILS_PAGE} element={<ProductPage />} />
 
-    </div>
+
+    </Routes>
+
     </>
   );
 }
