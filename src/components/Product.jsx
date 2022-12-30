@@ -18,7 +18,7 @@ function Product({title, image, price, category, rating, brand, discount, stock}
         className='flex cursor-pointer flex-row justify-between gap-2 p-2 relative'>
 
         <p
-         className='font-roboto cursor-pointer text-[18px] capitalize'>{title.slice(0,25)}...</p>
+         className='font-roboto cursor-pointer text-[18px] capitalize'>{title.slice(0,23)} {title.length >23 && ('...')}</p>
         {showFullName &&
         <p className='font-roboto z-50 text-[16px] px-4 py-3 rounded-md bg-gray-200 w-full right-1 absolute'>{title}</p>
         }
