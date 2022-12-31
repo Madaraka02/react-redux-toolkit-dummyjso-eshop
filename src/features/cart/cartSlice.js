@@ -18,7 +18,7 @@ export const cartSlice = createSlice({
 
             if(itemIndex >=0 ){
                 state.cartItems[itemIndex].cartQuantity +=1
-                toast.info(`${state.cartItems[itemIndex].title} quantity updated`, {
+                toast.info(`${state.cartItems[itemIndex].title} quantity increased`, {
                     position: "bottom-center",
                 })
             }else {
@@ -69,11 +69,18 @@ export const cartSlice = createSlice({
                     
                     localStorage.setItem("CartItems", JSON.stringify(state.cartItems))
 
+        },
+        clearCart(state, action){
+            state.cartItems = []
+            toast.error(`Cart was successfully cleared`, {
+                position: "bottom-center",
+            })
+            localStorage.setItem("CartItems", JSON.stringify(state.cartItems))
         }
 
     }
 })
 
-export const { addToCart, removeFromCart, decreaseCartItemQuantity } = cartSlice.actions
+export const { addToCart, removeFromCart, decreaseCartItemQuantity, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer

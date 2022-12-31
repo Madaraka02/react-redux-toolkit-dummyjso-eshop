@@ -1,10 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { clearCart } from '../features/cart/cartSlice'
 import { MAIN_HOMEPAGE } from '../routes'
 import CartItem from './CartItem'
 
 function CartItems() {
+    const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
   return (
     <>
@@ -40,7 +42,12 @@ function CartItems() {
 
     </div>
     <div className="flex flex-col gap-2 w-1/4">
-        Menu
+    <button 
+    onClick={() => dispatch(clearCart())}
+    className='text-center font-roboto text-white bg-slate-800 rounded-md px-6 py-3'>
+
+    Clear cart
+    </button>
     </div>
     </>
     }
