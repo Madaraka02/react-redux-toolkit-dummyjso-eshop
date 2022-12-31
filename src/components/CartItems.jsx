@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { clearCart } from '../features/cart/cartSlice'
+import { clearCart, getTotals } from '../features/cart/cartSlice'
 import { MAIN_HOMEPAGE } from '../routes'
 import CartItem from './CartItem'
 
 function CartItems() {
+
+
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart)
+
+    useEffect(() => {
+        dispatch(getTotals())
+
+    }, [cart, dispatch])
+    
   return (
     <>
     <div className="flex flex-row gap-5 w-full">
@@ -48,6 +56,9 @@ function CartItems() {
 
     Clear cart
     </button>
+    <p className='font-roboto text-[16px] text-slate-800'>SubTotal ${cart.cartTotalAmount}</p>
+
+    
     </div>
     </>
     }
