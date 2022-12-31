@@ -30,11 +30,18 @@ export const cartSlice = createSlice({
             }
 
             localStorage.setItem("CartItems", JSON.stringify(state.cartItems))
+        },
+        removeFromCart(state, action){
+            // this returns the items which are not equal to the action.payload.id
+            const remainingCartItems = state.cartItems.filter(
+                (cartItem) => cartItem.id !== action.payload.id)
+
+                state.cartItems=remainingCartItems
         }
 
     }
 })
 
-export const { addToCart } = cartSlice.actions
+export const { addToCart, removeFromCart } = cartSlice.actions
 
 export default cartSlice.reducer
