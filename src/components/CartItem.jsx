@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { addToCart, removeFromCart } from '../features/cart/cartSlice'
+import { addToCart, decreaseCartItemQuantity, removeFromCart } from '../features/cart/cartSlice'
 
 function CartItem({product, title, price, quantity, image, totalPrice}) {
     const dispatch = useDispatch()
@@ -13,6 +13,12 @@ function CartItem({product, title, price, quantity, image, totalPrice}) {
         dispatch(addToCart(product))
 
     }
+
+    const handleDecreaseItemQuantity = (product) => {
+        dispatch(decreaseCartItemQuantity(product))
+
+    }
+    
   return (
     <>
     <div className="flex flex-row gap-2 rounded-md w-full border justify-between px-2 py-2  border-slate-800">
@@ -39,10 +45,12 @@ function CartItem({product, title, price, quantity, image, totalPrice}) {
         </div>
         <div className="flex flex-col gap-1 justify-center items-center cursor-pointer">
             <div className="flex flex-row border border-slate-800 rounded-md gap-2 px-1 justify-center items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 py-1">
+            <svg
+            onClick={() => handleDecreaseItemQuantity(product)}
+             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 py-1">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
             </svg>
-
+            
             <p className='font-roboto text-[16px] text-slate-800 border-r border-l border-slate-800 px-2 py-1'>{quantity}</p>
 
 
