@@ -1,21 +1,34 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+import { addToCart } from '../features/cart/cartSlice'
 import { PRODUCT_PREFIX } from '../routes'
 import Rating from './Rating'
 
-function Product({id, title, image, price, category, rating, brand, discount, stock}) {
+function Product({product, id, title, image, price, category, rating, brand, discount, stock}) {
     const [showFullName, setShowFullName] = useState(false)
     const navigate = useNavigate()
+
+    const dispatch = useDispatch()
+    
+
+    const handleAddToCart = (product) => {
+      dispatch(addToCart(product))
+    }
   return (
     <>
-    <Link to={`${PRODUCT_PREFIX}${id}`}>
+    
         <div className=' bg-white rounded-md shadow-md flex flex-col gap-2 h-full'>
+        <Link to={`${PRODUCT_PREFIX}${id}`}>
         <div className='rounded-md p-2 relative'>
           <img src={image} className='rounded-md h-48 w-full object-contain' />
         <p className='font-roboto top-0 text-[16px] px-4 py-2 rounded-md bg-[#FFA500] justify-end right-1 absolute'>{discount}%</p>
 
         </div>
+        </Link>
 
+        
+        <Link to={`${PRODUCT_PREFIX}${id}`}>
         <div 
         onMouseEnter={() => setShowFullName(true)}
         onMouseLeave={() => setShowFullName(false)}
@@ -29,6 +42,7 @@ function Product({id, title, image, price, category, rating, brand, discount, st
         <p className='font-roboto text-[14px] '>{category}</p>
 
         </div>
+        </Link>
 
         <p className='font-roboto text-[18px] capitalize p-2'>${price}</p>
         <div className='flex flex-row gap-2 p-2'>
@@ -42,6 +56,7 @@ function Product({id, title, image, price, category, rating, brand, discount, st
         </div>
         <div className='p-2 w-full'>
             <button 
+            onClick={() => handleAddToCart(product)}
             className='text-center justify-center flex flex-row gap-3 font-roboto text-[14px] 
             text-white bg-slate-800 rounded-md w-full px-4 py-2'>
                 Add to cart
@@ -54,7 +69,7 @@ function Product({id, title, image, price, category, rating, brand, discount, st
         </div>
 
       </div>
-    </Link>
+    
     </>
   )
 }

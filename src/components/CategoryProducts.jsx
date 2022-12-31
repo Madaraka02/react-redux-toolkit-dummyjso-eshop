@@ -60,6 +60,7 @@ function CategoryProducts() {
       {displayDesign === 'gridView' ?
 
         <Product 
+        product={product}
         id={product.id}
         title={product.title} 
         brand={product.brand} 
@@ -72,6 +73,7 @@ function CategoryProducts() {
         :
 
         <ProductList
+        product={product}
         id={product.id}
         title={product.title} 
         brand={product.brand} 

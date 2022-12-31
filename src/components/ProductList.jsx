@@ -1,22 +1,32 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { addToCart } from '../features/cart/cartSlice'
 import { PRODUCT_PREFIX } from '../routes'
 import Rating from './Rating'
 
-function ProductList({id, title, image, price, category, rating, brand, stock} ) {
+function ProductList({product, id, title, image, price, category, rating, brand, stock} ) {
     const [showFullName, setShowFullName] = useState(false)
+
+    const dispatch = useDispatch()
+
+    const handleAddToCart = (product) => {
+      dispatch(addToCart(product))
+    }
 
   return (
     <>
-    <Link to={`${PRODUCT_PREFIX}${id}`}>
+    
 
         <div className=' bg-white rounded-md shadow-md flex flex-row gap-2 h-full'>
+        <Link to={`${PRODUCT_PREFIX}${id}`}>
         <div className='rounded-md p-2 w-3/12'>
           <img src={image} className='rounded-md h-48 w-full object-contain' />
         </div>
+        </Link>
 
         <div className='w-9/12'>
-
+        <Link to={`${PRODUCT_PREFIX}${id}`}>
         <div 
         onMouseEnter={() => setShowFullName(true)}
         onMouseLeave={() => setShowFullName(false)}
@@ -30,6 +40,7 @@ function ProductList({id, title, image, price, category, rating, brand, stock} )
         <p className='font-roboto text-[14px] '>{category}</p>
 
         </div>
+        </Link>
 
         <p className='font-roboto text-[18px] capitalize p-2'>${price}</p>
         <div className='flex flex-row gap-2 p-2'>
@@ -43,6 +54,8 @@ function ProductList({id, title, image, price, category, rating, brand, stock} )
         </div>
         <div className='p-2 w-full'>
             <button 
+
+            onClick={() => handleAddToCart(product)}
             className='text-center justify-center flex flex-row gap-3 font-roboto text-[14px] 
             text-white bg-slate-800 rounded-md w-full px-4 py-2'>
                 Add to cart
@@ -55,7 +68,7 @@ function ProductList({id, title, image, price, category, rating, brand, stock} )
         </div>
         </div>
       </div>
-      </Link>
+      
     </>
   )
 }

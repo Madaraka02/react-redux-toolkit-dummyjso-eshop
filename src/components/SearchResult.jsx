@@ -66,6 +66,7 @@ function SearchResult() {
       {displayDesign === 'gridView' ?
 
         <Product 
+        product={product}
         id={product.id}
         title={product.title} 
         brand={product.brand} 
@@ -78,6 +79,7 @@ function SearchResult() {
         :
 
         <ProductList
+        product={product}
         id={product.id}
         title={product.title} 
         brand={product.brand} 

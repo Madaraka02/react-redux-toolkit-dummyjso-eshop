@@ -1,9 +1,18 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../features/cart/cartSlice'
 import Rating from './Rating'
 
-function SingleProduct({title, image, price, category, rating, brand, discount, stock, images}) {
+function SingleProduct({ product, title, image, price, category, rating, brand, discount, stock, images}) {
   const [displayFullImage, setDisplayFullImage] = useState(null)
   console.log(displayFullImage)
+
+  const dispatch = useDispatch()
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
+
   return (
     <>
     <div className="flex flex-col gap-1 rounded-md shadow-md p-2 bg-white w-full">
@@ -42,6 +51,7 @@ function SingleProduct({title, image, price, category, rating, brand, discount, 
         </div>
         <div className='p-2 w-full'>
             <button 
+            onClick={() => handleAddToCart(product)}
             className='text-center justify-center flex flex-row gap-3 font-roboto text-[14px] 
             text-white bg-slate-800 rounded-md w-full px-4 py-2'>
                 Add to cart

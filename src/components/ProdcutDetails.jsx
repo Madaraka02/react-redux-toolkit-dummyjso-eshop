@@ -16,6 +16,7 @@ function ProdcutDetails() {
         <Skeleton height={300}/>
         :
     <SingleProduct
+    product={product}
     title={product?.title} 
     brand={product?.brand} 
     discount={product?.discountPercentage} 

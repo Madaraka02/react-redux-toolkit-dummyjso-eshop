@@ -58,6 +58,7 @@ function Products() {
       {displayDesign === 'gridView' ?
 
       <Product 
+      product={product}
       id={product.id}
       title={product.title} 
       brand={product.brand} 
@@ -70,6 +71,7 @@ function Products() {
       :
 
       <ProductList 
+      product={product}
       id={product.id}
       title={product.title} 
       brand={product.brand} 
@@ -106,6 +108,7 @@ function Products() {
       {displayDesign === 'gridView' ?
 
         <Product 
+        product={product}
         id={product.id}
         title={product.title} 
         brand={product.brand} 
@@ -118,6 +121,7 @@ function Products() {
         :
 
         <ProductList
+        product={product}
         id={product.id}
         title={product.title} 
         brand={product.brand} 
