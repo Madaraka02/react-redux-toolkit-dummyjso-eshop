@@ -37,6 +37,12 @@ export const cartSlice = createSlice({
                 (cartItem) => cartItem.id !== action.payload.id)
 
                 state.cartItems=remainingCartItems
+                localStorage.setItem("CartItems", JSON.stringify(state.cartItems))
+                toast.error(`${action.payload.title} was removed from cart`, {
+                    position: "bottom-center",
+                })
+                
+
         }
 
     }
