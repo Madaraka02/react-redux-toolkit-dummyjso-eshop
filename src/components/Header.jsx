@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGetCategoriesQuery } from '../features/products/productsApiSlice';
-import { CATEGORY_PREFIX, MAIN_HOMEPAGE, PRODUCT_PREFIX, SEARCH_PREFIX, SEARCH_RESULTS_PAGE } from '../routes';
+import { CART_PAGE, CATEGORY_PREFIX, MAIN_HOMEPAGE, PRODUCT_PREFIX, SEARCH_PREFIX, SEARCH_RESULTS_PAGE } from '../routes';
 
 function Header() {
     const navigate = useNavigate()
+    const cart = useSelector((state) => state.cart)
+
   const [navbar, setNavbar] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const [searchQuery, setSearchQuery] = useState('')
@@ -105,6 +108,7 @@ function Header() {
                 Account
               </button>
             </li>
+            <Link to={CART_PAGE}>
             <li className={`relative `}>
               <button
                 id='productDropdown' data-dropdown-toggle='dropdown'
@@ -114,10 +118,11 @@ function Header() {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-10 h-8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                 </svg>
-                <p className='absolute top-0 right-0 '>100</p>
+                <p className='absolute top-0 right-0 '>{cart.cartItems.length}</p>
 
               </button>
             </li>
+            </Link>
             {showCategories && 
               <div 
               onMouseEnter={() => setShowCategories(true)}
