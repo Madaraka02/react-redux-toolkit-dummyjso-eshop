@@ -1,11 +1,16 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { removeFromCart } from '../features/cart/cartSlice'
+import { addToCart, removeFromCart } from '../features/cart/cartSlice'
 
 function CartItem({product, title, price, quantity, image, totalPrice}) {
     const dispatch = useDispatch()
     const handleRemoveFromCart = (product) => {
         dispatch(removeFromCart(product))
+
+    }
+
+    const handleIncreaseItemQuantity = (product) => {
+        dispatch(addToCart(product))
 
     }
   return (
@@ -41,7 +46,9 @@ function CartItem({product, title, price, quantity, image, totalPrice}) {
             <p className='font-roboto text-[16px] text-slate-800 border-r border-l border-slate-800 px-2 py-1'>{quantity}</p>
 
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 py-1">
+            <svg
+            onClick={() => handleIncreaseItemQuantity(product)}
+             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 py-1">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>
 
